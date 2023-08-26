@@ -1,5 +1,6 @@
 package com.example.moviesassesment.domain.model
 
+import com.example.moviesassesment.common.Constants.IMAGE_URL
 import com.example.moviesassesment.common.utils.DateFormatter
 
 
@@ -16,5 +17,6 @@ data class Movie(
     val title: String,
     val voteAverage: Double,
 ) {
+    val imageUrl = "$IMAGE_URL$image"
     val year: String = DateFormatter.getYearFromFullDate(releaseDate)
 }
