@@ -9,6 +9,10 @@ android {
     namespace = "com.example.moviesassesment"
     compileSdk = 34
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
         applicationId = "com.example.moviesassesment"
         minSdk = 26
@@ -23,12 +27,18 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "Token", "\"${project.property("moviesApiToken")}\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "Token", "\"${project.property("moviesApiToken")}\"")
+
+
         }
     }
     compileOptions {
