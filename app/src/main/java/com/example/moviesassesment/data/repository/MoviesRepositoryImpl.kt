@@ -1,6 +1,7 @@
 package com.example.moviesassesment.data.repository
 
 import com.example.moviesassesment.data.remote.MoviesApi
+import com.example.moviesassesment.data.remote.dto.movie_detail_dto.MovieDetailResponse
 import com.example.moviesassesment.data.remote.dto.movies_list_dto.MovieDto
 import com.example.moviesassesment.data.remote.dto.movies_list_dto.MoviesListResponse
 import com.example.moviesassesment.domain.repository.MovieRepository
@@ -10,8 +11,12 @@ class MovieRepositoryImpl @Inject constructor(
     private val api: MoviesApi,
 ) : MovieRepository {
     override suspend fun getMovies(): List<MovieDto> {
-        val  moviesResponse :MoviesListResponse= api.getMovies()
+        val moviesResponse: MoviesListResponse = api.getMovies()
         return moviesResponse.results
+    }
+
+    override suspend fun getMovieById(movieId: Int): MovieDetailResponse {
+        return api.getMovieDetail(movieId)
     }
 
 }

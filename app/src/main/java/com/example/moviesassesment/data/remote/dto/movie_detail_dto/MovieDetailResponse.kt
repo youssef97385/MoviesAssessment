@@ -1,5 +1,8 @@
 package com.example.moviesassesment.data.remote.dto.movie_detail_dto
 
+import com.example.moviesassesment.data.remote.dto.movies_list_dto.MovieDto
+import com.example.moviesassesment.domain.model.Movie
+import com.example.moviesassesment.domain.model.MovieDetail
 import com.google.gson.annotations.SerializedName
 
 data class MovieDetailResponse(
@@ -39,5 +42,20 @@ data class MovieDetailResponse(
     @SerializedName("vote_average")
     val voteAverage: Double,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Int,
 )
+
+fun MovieDetailResponse.toMovieDetail(): MovieDetail {
+    return MovieDetail(
+        id,
+        backdropPath,
+        genres.map { it.name },
+        originalLanguage,
+        overview,
+        releaseDate,
+        title,
+        voteAverage,
+        budget,
+        revenue,spokenLanguages.map { it.englishName },status, runtime
+    )
+}

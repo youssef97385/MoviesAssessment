@@ -9,3 +9,4 @@ data class SpokenLanguageDto(
     val iso: String,
     val name: String
 )
+

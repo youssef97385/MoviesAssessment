@@ -12,11 +12,11 @@ data class MovieDetail(
     val releaseDate: String,
     val title: String,
     val voteAverage: Double,
-    val budget: String,
-    val revenue: String,
+    val budget: Int,
+    val revenue: Int,
     val spokenLanguages: List<String>,
     val status: String,
-    val runTime: String,
+    val runTime: Int,
 ) {
     val imageUrl = "${Constants.IMAGE_URL}$image"
     val formattedDate: String = DateFormatter.getFormattedMonthAndYear(releaseDate)
