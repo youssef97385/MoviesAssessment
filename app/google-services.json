@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "98540408596",
+    "project_id": "moviesassesment",
+    "storage_bucket": "moviesassesment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98540408596:android:a1611b0c14780eaefebc01",
+        "android_client_info": {
+          "package_name": "com.example.moviesassesment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98540408596-5u3aum5nduu7fqe2bjidhjasq6vo8ing.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcaHJDOPtTInHqgvf5cxjeGd1lZebqIAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98540408596-5u3aum5nduu7fqe2bjidhjasq6vo8ing.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

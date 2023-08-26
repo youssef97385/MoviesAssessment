@@ -1,8 +1,12 @@
+import com.google.firebase.appdistribution.gradle.firebaseAppDistribution
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.appdistribution")
 }
 
 android {
@@ -31,6 +35,12 @@ android {
             buildConfigField("String", "Token", "\"${project.property("moviesApiToken")}\"")
         }
         release {
+            firebaseAppDistribution {
+                artifactType = "APK"
+                releaseNotesFile = "/path/to/releasenotes.txt"
+                testers = "abalkhashab.c@stc.com.sa, mboraei.c@stc.com.sa"
+            }
+
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -112,6 +122,8 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.2.3"))
 
 
 }
