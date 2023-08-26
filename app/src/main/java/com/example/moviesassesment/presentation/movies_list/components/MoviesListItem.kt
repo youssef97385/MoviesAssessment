@@ -32,7 +32,7 @@ fun MovieListItem(movie: Movie, onClicked: (Movie) -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .height(IntrinsicSize.Max).clickable {
-                onClicked
+                onClicked(movie)
             }
     ) {
         AsyncImage(

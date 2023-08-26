@@ -1,6 +1,5 @@
-package com.example.moviesassesment.presentation.movies_list.components
+package com.example.moviesassesment.presentation.movie_detail.components
 
-import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,25 +15,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.example.moviesassesment.presentation.Screen
+import com.example.moviesassesment.presentation.movie_detail.MovieDetailViewModel
 import com.example.moviesassesment.presentation.movies_list.MoviesListViewModel
+import com.example.moviesassesment.presentation.movies_list.components.MovieListItem
 
 @Composable
-fun MoviesListScreen(
-    navController: NavController,
-    viewModel: MoviesListViewModel = hiltViewModel(),
-) {
+fun MovieDetailScreen(viewModel: MovieDetailViewModel = hiltViewModel()) {
     val state = viewModel.state.value
 
     Box(modifier = Modifier.fillMaxSize()) {
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(state.movies) { movie ->
-                MovieListItem(movie = movie, onClicked = {
-                    navController.navigate(Screen.MovieDetailScreen.route + "/${movie.id}")
-                })
-            }
-        }
+
+        Text(
+            text = state.movie?.title.toString(),
+            color = MaterialTheme.colorScheme.error,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp)
+                .align(Alignment.Center)
+        )
 
         if (state.error.isNotBlank()) {
             Text(

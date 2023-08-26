@@ -6,13 +6,19 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHost
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.moviesassesment.presentation.ui.theme.MoviesAssesmentTheme
 import com.example.moviesassesment.BuildConfig
+import com.example.moviesassesment.presentation.movie_detail.components.MovieDetailScreen
 import com.example.moviesassesment.presentation.movies_list.components.MoviesListScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,8 +35,22 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val navController = rememberNavController()
 
-                   MoviesListScreen()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.MoviesListScreen.route
+                    ) {
+                        composable(Screen.MovieDetailScreen.route + "/{movieId}") { backStackEntry ->
+                            MovieDetailScreen()
+                        }
+                        composable(Screen.MoviesListScreen.route) {
+                            MoviesListScreen(navController)
+                        }
+
+                        // Add more composable functions for other screens
+                    }
+
                 }
             }
         }

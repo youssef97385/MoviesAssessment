@@ -1,5 +1,6 @@
 package com.example.moviesassesment.presentation.movie_detail
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -22,7 +23,8 @@ class MovieDetailViewModel @Inject constructor(
     val state: State<MovieDetailState> = _state
 
     init {
-        savedStateHandle.get<Int>(Constants.PARAM_MOVIE_ID)?.let { movieId -> getMovies(movieId) }
+        savedStateHandle.get<String>(Constants.PARAM_MOVIE_ID)
+            ?.let { movieId -> getMovies(movieId.toInt()) }
     }
 
     private fun getMovies(movieId: Int) {
